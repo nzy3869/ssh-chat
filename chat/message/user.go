@@ -231,7 +231,7 @@ func (u *User) render(m Message) string {
 		if cfg.Timezone != nil {
 			ts = ts.In(cfg.Timezone)
 		} else {
-			ts = ts.UTC()
+			ts = ts.Local()
 		}
 		return cfg.Theme.Timestamp(ts.Format(*cfg.Timeformat)) + "  " + out + Newline
 	}
