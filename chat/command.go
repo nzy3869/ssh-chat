@@ -335,13 +335,13 @@ func InitCommands(c *Commands) {
 
 			var body string
 			if cfg.Timeformat != nil {
+				var tzname string
 				if cfg.Timezone != nil {
-					tzname := time.Now().In(cfg.Timezone).Format("MST")
-					body = fmt.Sprintf("Timestamp is toggled ON, timezone is %q", tzname)
+					tzname = time.Now().In(cfg.Timezone).Format("MST")
 				} else {
-					name, _ := time.Now().Zone()
-					body = "Timestamp is toggled ON, timezone is " + name
+					tzname, _ = time.Now().Zone()
 				}
+				body = fmt.Sprintf("Timestamp is toggled ON, timezone is %q", tzname)
 			} else {
 				body = "Timestamp is toggled OFF"
 			}
